@@ -41,23 +41,23 @@ int SegmentTree::FindSecondMin(const std::pair<int, int>& segment) const {
 		int new_right = (right - 1) / 2;
 		if (left == 2 * new_left + 2) {
 			++new_left;
-			current_min = std::min(current_min, vertices[left].first);
 			current_second_min = std::min(std::max(current_min, vertices[left].first),
 				std::min(current_second_min, vertices[left].second));
+			current_min = std::min(current_min, vertices[left].first);
 		}
 		if (right == 2 * new_right + 1) {
 			--new_right;
-			current_min = std::min(current_min, vertices[right].first);
 			current_second_min = std::min(std::max(current_min, vertices[right].first),
 				std::min(current_second_min, vertices[right].second));
+			current_min = std::min(current_min, vertices[right].first);
 		}
 		left = new_left;
 		right = new_right;
 	}
 	if (left == right) { // Если от отрезка осталась одна вершина на текущем уровне
-		current_min = std::min(current_min, vertices[left].first);
 		current_second_min = std::min(std::max(current_min, vertices[left].first),
 			std::min(current_second_min, vertices[left].second));
+		current_min = std::min(current_min, vertices[left].first);
 	}
 	return current_second_min;
 }

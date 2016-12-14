@@ -1,3 +1,5 @@
+// This program finds second min among the segment of numbers for a lot of queries.
+// We use segment tree, which need time O(n) to build it and O(logn) for every query.
 #include <fstream>
 #include "segment_tree.h"
 
@@ -17,6 +19,8 @@ int main() {
 	for (int i = 0; i < quantity_of_queries; ++i) {
 		std::pair<int, int> segment;
 		file_in >> segment.first >> segment.second;
+		segment.first--;
+		segment.second--;
 		file_out << segment_tree.FindSecondMin(segment) << std::endl;
 	}
 	file_in.close();
